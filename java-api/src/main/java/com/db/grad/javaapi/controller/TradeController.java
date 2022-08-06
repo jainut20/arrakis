@@ -3,5 +3,5 @@ package com.db.grad.javaapi.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class BondsController {
+public class TradeController {
 }
