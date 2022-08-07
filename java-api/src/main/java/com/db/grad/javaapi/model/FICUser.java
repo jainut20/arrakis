@@ -10,16 +10,26 @@ public class FICUser {
     @Id
     private long id;
     private String name;
-    private String username;
+    private String email;
     private String password;
+
+    private String role;
 
     public FICUser(){};
 
-    public FICUser(long id, String name, String username, String password){
+    public FICUser(long id, String name, String email, String password, String role){
         this.id = id;
         this.name = name;
-        this.username = username;
+        this.email = email;
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public long getId() {
@@ -38,12 +48,12 @@ public class FICUser {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

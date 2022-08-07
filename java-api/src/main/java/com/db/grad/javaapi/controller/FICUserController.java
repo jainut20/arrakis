@@ -27,7 +27,7 @@ public class FICUserController {
 
     @PostMapping("/user/login")
     public FICUser findUser(@RequestBody LoginCredentials credentials){
-        return usersRepository.findByUsername(credentials.username);
+        return usersRepository.findByEmail(credentials.email);
 
         // need to add authentication code
     }
@@ -35,11 +35,11 @@ public class FICUserController {
 }
 
 class LoginCredentials{
-    String username;
+    String email;
     String password;
 
-    public LoginCredentials(String username, String password){
-        this.username = username;
+    public LoginCredentials(String email, String password){
+        this.email = email;
         this.password = password;
     }
 }
