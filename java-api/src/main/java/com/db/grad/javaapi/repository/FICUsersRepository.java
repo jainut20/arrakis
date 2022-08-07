@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FICUsersRepository extends JpaRepository<FICUser,Long> {
-    FICUser findByUsername(String username);
+    FICUser findByEmail(String email);
 }
