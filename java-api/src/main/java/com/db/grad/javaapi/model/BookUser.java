@@ -9,10 +9,12 @@ import javax.persistence.Table;
 @Table(name = "bookuser")
 public class BookUser {
 
-    @ManyToOne @MapsId("bookid")
+    @ManyToOne @MapsId("bookid") //Column name for this table
     private Book book;
-    @ManyToOne @MapsId("userid")
+
+
+    @ManyToOne @MapsId("userid") //Column name for this table
     private FICUser ficuser;
 
-    
+
 }
