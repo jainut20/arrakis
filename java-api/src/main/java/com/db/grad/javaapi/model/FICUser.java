@@ -2,8 +2,10 @@ package com.db.grad.javaapi.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "ficuser")
 public class FICUser {
     @Id
     private long id;

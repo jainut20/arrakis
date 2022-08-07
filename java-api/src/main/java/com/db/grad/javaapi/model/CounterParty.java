@@ -1,9 +1,12 @@
 package com.db.grad.javaapi.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "counterparty")
 public class CounterParty {
     @Id
     private long id;
@@ -17,6 +20,7 @@ public class CounterParty {
         this.name = name;
     }
 
+    @Id
     public long getId() {
         return id;
     }
@@ -24,6 +28,7 @@ public class CounterParty {
         this.id = id;
     }
 
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
