@@ -13,7 +13,6 @@ public class Book {
     @Id
     private long id;
     private String bookname;
-
  
     public Book(){
         
