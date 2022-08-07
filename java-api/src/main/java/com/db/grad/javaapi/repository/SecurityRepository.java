@@ -19,6 +19,7 @@ public interface SecurityRepository extends JpaRepository<Security,Long> {
     @Query("select s from Security s where s.maturitydate <= :enddate and s.maturitydate >= :startdate")
     public List<Security> findByDateRange(@Param("startdate") Date startDate, @Param("enddate") Date endDate);
 
+    Security findTopByOrderByIdDesc();
 
 }   
 
