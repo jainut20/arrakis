@@ -14,10 +14,14 @@ public class Trade {
 
     @Id
     private long id;
+
+    //foreign keys
     private long bookid;
     private long counterpartyid;
     private long securityid;
     private long quantity;
+
+
     private String status;
     private double price;
     private String buysell;

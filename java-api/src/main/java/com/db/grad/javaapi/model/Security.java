@@ -17,10 +17,10 @@ public class Security {
     private String isin;
     private String cusip;
     private String issuer;
-    private Date maturitydate;
+    private Date maturitydate; 
     private String coupon;
     private String type;
-    private long facevalue;
+    private double facevalue;
     private String status;
 
     public Security(){}
@@ -95,10 +95,10 @@ public class Security {
     }
 
     @Column(name = "facevalue", nullable = false)
-    public long getFacevalue() {
+    public double getFacevalue() {
         return facevalue;
     }
-    public void setFacevalue(long facevalue) {
+    public void setFacevalue(double facevalue) {
         this.facevalue = facevalue;
     }
 
