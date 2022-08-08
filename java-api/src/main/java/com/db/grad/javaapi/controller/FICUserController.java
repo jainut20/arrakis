@@ -3,12 +3,10 @@ package com.db.grad.javaapi.controller;
 import com.db.grad.javaapi.model.FICUser;
 import com.db.grad.javaapi.repository.FICUsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @RestController
+@CrossOrigin
 public class FICUserController {
     @Autowired
     private FICUsersRepository usersRepository ;

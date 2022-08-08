@@ -1,14 +1,11 @@
 package com.db.grad.javaapi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ficuser")
 public class FICUser {
-    @Id
+    @Id @GeneratedValue
     private long id;
     private String name;
     private String email;
@@ -17,11 +14,11 @@ public class FICUser {
 
     public FICUser(){};
 
-    public FICUser(long id, String name, String email, String password, String role){
-        this.id = id;
+    public FICUser(String name, String email, String password, String role){
         this.name = name;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
 
