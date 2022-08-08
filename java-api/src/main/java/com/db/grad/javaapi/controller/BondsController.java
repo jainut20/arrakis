@@ -24,24 +24,32 @@ public class BondsController {
     @Autowired
     private SecurityRepository securityRepository;
 
-    @PostMapping("/addSecurity")
+    @PostMapping("/security/add")
     public Security addSecurity(@RequestBody Security security){
         return securityRepository.saveAndFlush(security);
     }
 
-    @PutMapping("/updateSecurity/{id}")
+    @PutMapping("/security/update/{id}")
     public ResponseEntity<Security> updateSecurity(@PathVariable(value = "id") Long id,
                                                    @Valid @RequestBody Security securityDetails) throws ResourceNotFoundException {
-        Security getSecurity = securityRepository.findById(id)
+        Security security = securityRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Security not found for this id :: " + id));
 
-        getSecurity.setStatus(securityDetails.getStatus());
+        security.setId(securityDetails.getId());
+        security.setIsin(securityDetails.getIsin());
+        security.setCusip(securityDetails.getCusip());
+        security.setIssuer(securityDetails.getIssuer());
+        security.setMaturitydate(securityDetails.getMaturitydate());
+        security.setCoupon(securityDetails.getCoupon());
+        security.setType(securityDetails.getType());
+        security.setFacevalue(securityDetails.getFacevalue());
+        security.setStatus(securityDetails.getStatus());
 
-        final Security updatedSecurity = securityRepository.saveAndFlush(getSecurity);
+        final Security updatedSecurity = securityRepository.saveAndFlush(security);
         return ResponseEntity.ok(updatedSecurity);
     }
 
-    @DeleteMapping("/deleteSecurity/{id}")
+    @DeleteMapping("/security/delete/{id}")
     public Map< String, Boolean > deleteSecurity(@PathVariable(value = "id") Long id)
             throws Exception {
         Security security = securityRepository.findById(id)
@@ -52,12 +60,12 @@ public class BondsController {
         response.put("deleted", Boolean.TRUE);
         return response;
     }
-    @GetMapping("/getSecurities")
+    @GetMapping("/security/getall")
     public List <Security> getAllSecurities(){
         return securityRepository.findAll();
     }
 
-    @GetMapping("/getSecurity/{id}")
+    @GetMapping("/security/{id}")
     public ResponseEntity < Security > getSecurityById(@PathVariable(value = "id") Long id)
             throws ResourceNotFoundException {
         Security security = securityRepository.findById(id)
@@ -71,12 +79,12 @@ public class BondsController {
         return securityRepository.findByDateRange(dateRange.getStartDate(),dateRange.getEndDate());
     }
 
-    @PostMapping("/getSecurityByUserId/{userid}")
+    @GetMapping("/security/getbyuserid/{userid}")
     public List<Security> filterByUserId(@PathVariable(value = "userid") Long userid){
         return securityRepository.findByUserId(userid);
     }
 
-    @PostMapping("/getTradeById/{sId}")
+    @GetMapping("/security/gettradebyid/{sId}")
     public List<Trade> tradeById(@PathVariable(value = "sId") Long sId){
         return securityRepository.findTradeBySecurityId(sId);
     }

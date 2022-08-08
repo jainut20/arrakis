@@ -7,9 +7,9 @@ INSERT INTO SECURITY (id,isin,cusip,issuer,maturitydate,coupon,type,facevalue,st
                      (1,'DY2TYT12','23EDJHH','RIL','2022-01-02','ABC','GOVT',1234.2,'ACTIVE');
 
 INSERT INTO SECURITY (id,isin,cusip,issuer,maturitydate,coupon,type,facevalue,status) VALUES
-                     (2,'DY2TYT12','23EDJHH','RIL','2020-12-01','ABC','GOVT',1234.2,'ACTIVE');
+                     (2,'DY2TYT12','23EDJHH','DB','2020-12-01','ABC','GOVT',1234.2,'ACTIVE');
 
 
 INSERT INTO SECURITY (id,isin,cusip,issuer,maturitydate,coupon,type,facevalue,status) VALUES
-                     (3,'DY2TYT12','23EDJHH','RIL','2018-08-01','ABC','GOVT',1234.2,'ACTIVE');
+                     (3,'DY2TYT12','23EDJHH','CS','2018-08-01','ABC','GOVT',1234.2,'ACTIVE');
 

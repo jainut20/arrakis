@@ -19,11 +19,13 @@ public interface SecurityRepository extends JpaRepository<Security,Long> {
 
     @Query("select s from Security s where s.maturitydate <= :enddate and s.maturitydate >= :startdate")
     public List<Security> findByDateRange(@Param("startdate") Date startDate, @Param("enddate") Date endDate);
-    Security findTopByOrderByIdDesc();
-    @Query("select s from Security s where securityid in ( Select securityid from trade where bookid in (Select bookid from bookuser where userid = :userid))")
-    public List <Security> findByUserId(@Param("userid")Long userid);
 
-    @Query("select s from trade where securityid = :sId")
+//    public Security findTopByOrderByIdDesc();
+
+    @Query("select s from Security s where s.id in ( Select t.securityid from Trade t where t.bookid in (Select b.bookid from BookUser b where b.userid = :userid))")
+    public List <Security> findByUserId(@Param("userid") Long userid);
+
+    @Query("select t from Trade t where t.securityid = :sId")
     public List <Trade> findTradeBySecurityId(@Param("sId") Long sId);
 }
 
