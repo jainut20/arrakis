@@ -1,7 +1,8 @@
 import axios from "axios";
 import { hostNameUrl } from "../config/api";
 
-const baseURL = "http://localhost:8080";
+// const baseURL = "http://localhost:8080";
+const baseURL = hostNameUrl;
 
 const addSecurity = (security) => {
   return axios.post(`${baseURL}/security/add`, security);
