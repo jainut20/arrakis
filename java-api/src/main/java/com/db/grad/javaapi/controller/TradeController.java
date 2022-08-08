@@ -21,7 +21,6 @@ import com.db.grad.javaapi.repository.TradeRepository;
 import com.db.grad.javaapi.exception.ResourceNotFoundException;
 
 @RestController
-@RequestMapping("/api/v1")
 public class TradeController {
   
 	@Autowired
@@ -31,7 +30,7 @@ public class TradeController {
 	private SecurityRepository securityRepository;
 	
 	//	Get all Trades
-	@GetMapping("/trades")
+	@GetMapping("/trade/getall")
     public List < Trade > getAllTrades() {
         return tradeRepository.findAll();
     }
@@ -59,8 +58,8 @@ public class TradeController {
     // Create a trade
     @PostMapping("/trade")
     public Trade createTrade(@Valid @RequestBody Trade trade) {
-    	Trade last_element = tradeRepository.findTopByOrderByIdDesc();
-    	trade.setId(last_element.getId() + 1);
+//    	Trade last_element = tradeRepository.findTopByOrderByIdDesc();
+//    	trade.setId(last_element.getId() + 1);
     	return tradeRepository.saveAndFlush(trade);
     }
     
@@ -81,11 +80,8 @@ public class TradeController {
     		trade.setStatus(update_trade_details.getStatus());
     		trade.setTradedate(update_trade_details.getTradedate());
     		
-    		
-    		
     		final Trade new_trade_details = tradeRepository.save(trade);
     		return ResponseEntity.ok(new_trade_details);
-    		
     }
 
 }
