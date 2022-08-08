@@ -11,5 +11,7 @@ import java.util.List;
 public interface TradeRepository extends JpaRepository<Trade,Long> {
 
     public List<Trade> findBysecurityid(long securityid);
+    
+    Trade findTopByOrderByIdDesc();
 }
 
