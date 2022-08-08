@@ -1,7 +1,7 @@
 package com.db.grad.javaapi.model;
 
 import javax.persistence.*;
-import java.io.Serial;
+//import java.io.Serial;
 import java.io.Serializable;
 
 @Entity

@@ -1,5 +1,6 @@
 package com.db.grad.javaapi.repository;
 
+import com.db.grad.javaapi.model.BookUser;
 import com.db.grad.javaapi.model.Security;
 import com.db.grad.javaapi.model.Trade;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,7 +20,6 @@ public interface SecurityRepository extends JpaRepository<Security,Long> {
     @Query("select s from Security s where s.maturitydate <= :enddate and s.maturitydate >= :startdate")
     public List<Security> findByDateRange(@Param("startdate") Date startDate, @Param("enddate") Date endDate);
 
-
-}   
+}
 
 

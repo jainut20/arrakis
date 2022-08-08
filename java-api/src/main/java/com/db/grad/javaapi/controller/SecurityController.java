@@ -32,17 +32,17 @@ public class SecurityController {
         return securityRepository.saveAndFlush(security);
     }
 
-//    @PutMapping("/updateSecurity/{id}")
-//    public ResponseEntity <Security> updateSecurity(@PathVariable(value = "id") Long id,
-//                                                    @Valid @RequestBody Security securityDetails) throws ResourceNotFoundException{
-//        Security getSecurity = securityRepository.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("Security not found for this id :: " + id));
-//
-//        getSecurity.setStatus(securityDetails.getStatus());
-//
-//        final Security updatedSecurity = securityRepository.saveAndFlush(getSecurity);
-//        return ResponseEntity.ok(updatedSecurity);
-//    }
+    @PutMapping("/updateSecurity/{id}")
+    public ResponseEntity <Security> updateSecurity(@PathVariable(value = "id") Long id,
+                                                    @Valid @RequestBody Security securityDetails) throws ResourceNotFoundException{
+        Security getSecurity = securityRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Security not found for this id :: " + id));
+
+        getSecurity.setStatus(securityDetails.getStatus());
+
+        final Security updatedSecurity = securityRepository.saveAndFlush(getSecurity);
+        return ResponseEntity.ok(updatedSecurity);
+    }
 
     @DeleteMapping("/deleteSecurity/{id}")
     public Map < String, Boolean > deleteSecurity(@PathVariable(value = "id") Long id)
