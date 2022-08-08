@@ -3,10 +3,7 @@ package com.db.grad.javaapi.controller;
 import com.db.grad.javaapi.model.WatchList;
 import com.db.grad.javaapi.repository.WatchListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,8 +14,8 @@ public class WatchListController {
     private WatchListRepository watchListRepository;
 
     @GetMapping("/watchlist/{userid}")
-    public List<WatchList> getList(@RequestBody WatchList watchList){
-        return watchListRepository.findByUserid(watchList.getUserid());
+    public List<WatchList> getList(@PathVariable long userid){
+        return watchListRepository.findByUserid(userid);
     }
 
     @PostMapping("watchlist/add")
