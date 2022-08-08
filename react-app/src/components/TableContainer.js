@@ -71,7 +71,10 @@ export default function Table({ columns, data }) {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                console.log(cell.render("Cell").props.headers[0][8])
+                return <td  {...cell.getCellProps()}>{cell.render("Cell")}
+                {/* style={{color: cell.value === "ACTIVE" ? "green" : "red"}} */}
+                </td>;
               })}
             </tr>
           );

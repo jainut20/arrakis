@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Table from "./TableContainer";
 import { SelectColumnFilter } from "./Filter";
+import SecurityServices from "../services/SecurityService";
+import { Button } from "react-bootstrap";
 
 
 
@@ -9,65 +11,79 @@ function Tabledata() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios("http://api.tvmaze.com/search/shows?q=girls")
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
+    SecurityServices.getAllSecurity().then((res)=>{
+      setData(res.data)
+    }).catch((err) => console.log(err));
+    // axios("http://api.tvmaze.com/search/shows?q=girls")
+    //   .then((res) => {
+    //     setData(res.data);
+    //   })
+    //   .catch((err) => console.log(err));
   }, []);
 
   const columns = [
     {
-      Header: "Name",
-      accessor: "show.name",
+      Header: "ID",
+      accessor: "id",
+    },
+    {
+      Header: "ISIN",
+      accessor: "isin",
+    },
+    {
+      Header: "CUSIP",
+      accessor: "cusip",
+    },
+    {
+      Header: "Issuer",
+      accessor: "issuer",
+      Cell: ({ cell: { value } }) => value || "-",
+    },
+    {
+      Header: "Maturity Date",
+      accessor: "maturitydate",
+      
+    },
+    {
+      Header: "Coupon",
+      accessor: "coupon",
+      // disable the filter for particular column
+      
+      Cell: ({ cell: { value } }) => value || "-",
     },
     {
       Header: "Type",
-      accessor: "show.type",
-    },
-    {
-      Header: "Language",
-      accessor: "show.language",
+      accessor: "type",
       Filter: SelectColumnFilter,
-      filter: "includes"
     },
-    // {
-    //   Header: "Official Site",
-    //   accessor: "show.officialSite",
-    //   Cell: ({ cell: { value } }) =>
-    //     value ? <a href={value}>{value}</a> : "-",
-    // },
     {
-      Header: "Rating",
-      accessor: "show.rating.average",
-      Cell: ({ cell: { value } }) => value || "-",
+      Header: "Face Value",
+      accessor: "facevalue",
     },
     {
       Header: "Status",
-      accessor: "show.status",
+      accessor: "status",
       Filter: SelectColumnFilter,
-      filter: "includes",
+      filter: "includes"
+      
     },
-    {
-      Header: "Premiered",
-      accessor: "show.premiered",
-      // disable the filter for particular column
-      disableFilters: true,
-      Cell: ({ cell: { value } }) => value || "-",
-    },
-    // {
-    //   Header: "Time",
-    //   accessor: "show.schedule.time",
-    //   disableFilters: true,
-    //   Cell: ({ cell: { value } }) => value || "-",
-    // },
+    
   ];
 
   return (
-    <div >
-      <h1>
-        <center>View Bonds</center>
-      </h1>
+    <div style={{padding:80}} class="container" >
+      <div class="row">
+    <div class="col-sm">
+    <h4>
+        Registered Bonds
+      </h4>
+    </div>
+    <div class="col col-lg-1">
+      <Button>ADD</Button>
+    </div>
+    
+  </div>
+      
       <Table columns={columns} data={data} />
     </div>
   );
