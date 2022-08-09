@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
-import { Redirect } from "react-router";
+
 import UserAuthService from "../services/UserAuthService";
-import { useHistory } from "react-router-dom";
+
+import "./style.css";
 
 export default class Login extends Component {
   constructor(props) {
@@ -36,9 +37,10 @@ export default class Login extends Component {
         console.log(response);
         if (response) {
           console.log("login success");
-          window.location.href = '/view'
+          
+          window.location.href = '/viewsecurity'
         } else {
-          console.log("login fail");
+          console.log(this.state.email);
         }
       }
     );
@@ -46,7 +48,8 @@ export default class Login extends Component {
 
   render() {
     return (
-      <Container>
+
+      <Container className="col-md-5 mx-auto my-auto ">
         <form onSubmit={this.handleLogin}>
           <h3>Sign In</h3>
           <div className="mb-3">

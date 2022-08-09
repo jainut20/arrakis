@@ -6,14 +6,15 @@ class UserAuthService {
     return axios
       .post(hostNameUrl + "/user/login", { email: email, password: password })
       .then((response) => {
-        if (response.data.accessToken) {
+        if (response) {
+          
           localStorage.setItem("user", JSON.stringify(response.data));
         }
         return response.data;
       });
   }
   logout() {
-    localStorage.removeItem("user");
+    localStorage.clear();
   }
   register(username, email, password) {
     return axios.post(hostNameUrl + "/user/signup", {

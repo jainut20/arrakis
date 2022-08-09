@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
+
 import "../index.css";
 import UserAuthService from "../services/UserAuthService";
-import Modal from 'react-bootstrap/Modal';
+import Modal from "react-bootstrap/Modal";
+
+import "../index.css";
+import "./style.css";
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -33,8 +37,8 @@ export default class SignUp extends Component {
     });
   }
   handleValidation() {
-    let name = this.state.username
-    let email = this.state.email
+    let name = this.state.username;
+    let email = this.state.email;
     let errors = {};
     let formIsValid = true;
 
@@ -42,7 +46,7 @@ export default class SignUp extends Component {
     if (!name) {
       formIsValid = false;
       errors["name"] = "Cannot be empty";
-      console.log(this.state.username)
+      
     }
 
     // if (typeof name !== "undefined") {
@@ -51,14 +55,14 @@ export default class SignUp extends Component {
     //     errors["name"] = "Only letters";
     //     console.log('name 2')
     //   }
-      
+
     // }
 
     //Email
     if (!email) {
       formIsValid = false;
       errors["email"] = "Cannot be empty";
-      console.log('email')
+      console.log("email");
     }
 
     // if (typeof email !== "undefined") {
@@ -97,64 +101,62 @@ export default class SignUp extends Component {
         this.state.username,
         this.state.email,
         this.state.password
-      ).then(() => {
-        window.location.href = '/view'
-        
+      ).then((response) => {
+        window.location.href = "/sign-in";
+        console.log(response)
       });
-    }
-    else{
-      window.prompt('error')
+    } else {
+      <div className="form-group alert alert-danger" role="alert">error</div>
     }
   }
   render() {
     return (
       <Container className="col-md-5 mx-auto my-auto ">
-        <Card>
-          <form onSubmit={this.handleRegister}>
-            <h3>Sign Up</h3>
-            <div className="mb-3">
-              <label>Name</label>
-              <input
-                type="text"
-                onChange={this.onChangeUsername}
-                value={this.state.username}
-                className="form-control"
-                placeholder="Name"
-                name="username"
-              />
-            </div>
-            <div className="mb-3">
-              <label>Email address</label>
-              <input
-                type="email"
-                value={this.state.email}
-                onChange={this.onChangeEmail}
-                name="email"
-                className="form-control"
-                placeholder="Enter email"
-              />
-            </div>
-            <div className="mb-3">
-              <label>Password</label>
-              <input
-                type="password"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-                name="password"
-                className="form-control"
-                placeholder="Enter password"
-              />
-            </div>
-            <div className="d-grid">
-              <button type="submit" className="btn btn-primary">
-                Sign Up
-              </button>
-            </div>
-            <p className="forgot-password text-right">
-              Already registered <a href="/sign-in">sign in?</a>
-            </p>
-          </form>
-        </Card>
+        <form onSubmit={this.handleRegister}>
+          <h3>Sign Up</h3>
+
+          <div className="mb-3">
+            <label>Name</label>
+            <input
+              type="text"
+              onChange={this.onChangeUsername}
+              value={this.state.username}
+              className="form-control"
+              placeholder="Name"
+              name="username"
+            />
+          </div>
+          <div className="mb-3">
+            <label>Email address</label>
+            <input
+              type="email"
+              value={this.state.email}
+              onChange={this.onChangeEmail}
+              name="email"
+              className="form-control"
+              placeholder="Enter email"
+            />
+          </div>
+          <div className="mb-3">
+            <label>Password</label>
+            <input
+              type="password"
+              value={this.state.password}
+              onChange={this.onChangePassword}
+              name="password"
+              className="form-control"
+              placeholder="Enter password"
+            />
+          </div>
+          <div className="d-grid">
+            <button type="submit" className="btn btn-primary">
+              Sign Up
+            </button>
+          </div>
+          <p className="forgot-password text-right">
+            Already registered <a href="/sign-in">sign in?</a>
+          </p>
+        </form>
       </Container>
     );
   }

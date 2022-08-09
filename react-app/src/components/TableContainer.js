@@ -25,7 +25,7 @@ export default function Table({ columns, data }) {
   );
 
   return (
-    <table {...getTableProps()} className="table table-striped">
+    <table style={{display:"block", overflow:"auto"}} {...getTableProps()} className="table table-striped">
       <thead>
          {headerGroups.map(headerGroup => (
              <tr {...headerGroup.getHeaderGroupProps()}>
@@ -33,7 +33,7 @@ export default function Table({ columns, data }) {
                    <th
                        {...column.getHeaderProps(column.getSortByToggleProps())}
                        style={{
-                         borderBottom: 'solid 3px red',
+                         borderBottom: 'solid 3px blue',
                          color: 'black',
                        }}
                    >
@@ -71,7 +71,10 @@ export default function Table({ columns, data }) {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                console.log(cell.render("Cell").props.headers[0][8])
+                return <td  {...cell.getCellProps()}>{cell.render("Cell")}
+                {/* style={{color: cell.value === "ACTIVE" ? "green" : "red"}} */}
+                </td>;
               })}
             </tr>
           );
