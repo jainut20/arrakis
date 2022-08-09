@@ -38,6 +38,7 @@ export default class Login extends Component {
         if (response) {
           console.log("login success");
           
+          // this.props.history.push("/viewsecurity")
           window.location.href = '/viewsecurity'
         } else {
           console.log(this.state.email);

@@ -85,7 +85,7 @@ function SecTabledata() {
     
   </div>
       
-      <Table columns={columns} data={data} />
+      <Table handleDelete={(data)=>{console.log(`delete called on ${data}`)}} columns={columns} data={data} />
     </div>
   );
 }

@@ -102,7 +102,8 @@ export default class SignUp extends Component {
         this.state.email,
         this.state.password
       ).then((response) => {
-        window.location.href = "/sign-in";
+        // this.props.history.push("/sign-in")
+        window.location.href = "/sign-in"
         console.log(response)
       });
     } else {

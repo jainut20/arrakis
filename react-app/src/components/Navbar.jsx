@@ -22,11 +22,12 @@ class NavbarComp extends Component {
     }
   }
   handleLogout() {
-    UserAuthService.logOut();
+    UserAuthService.logout();
+    window.location.href = "/sign-in"
     console.log("logout");
   }
   render() {
-    const currUser = JSON.parse(localStorage.getItem("user") || "");
+    const currUser = JSON.parse(localStorage.getItem("user") || "{}");
     console.log(currUser);
     return (
       <div>
@@ -44,7 +45,7 @@ class NavbarComp extends Component {
               <h1>BONDS</h1>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
-            {currUser ? (
+            {currUser.email ? (
               <Navbar.Collapse id="navbarScroll">
                 <Nav
                   className="me-auto"
@@ -53,20 +54,25 @@ class NavbarComp extends Component {
                 >
                   <NavDropdown title="View" id="basic-nav-dropdown">
                     <NavDropdown.Item 
-                    //as={Link} 
-                    to="/viewsecurity">
+                    onClick={()=>{window.location.href = "/viewsecurity"}}
+                    // to="/"
+                    >
                       Securities
                     </NavDropdown.Item>
                     <NavDropdown.Item 
                     //as={Link} 
-                    to="/viewtrades">
+                    onClick={()=>{window.location.href = "/viewtrades"}}
+                    // to="/viewtrades"
+                    >
                       Trades{" "}
                     </NavDropdown.Item>
                   </NavDropdown>
 
                   <Nav.Link 
                   //as={Link} 
-                  to="/watchlist">
+                  onClick={()=>{window.location.href = "/watchlist"}}
+                  // to="/watchlist"
+                  >
                     Watchlist
                   </Nav.Link>
                 </Nav>
@@ -75,7 +81,6 @@ class NavbarComp extends Component {
                     style={{ backgroundColor: "darkblue" }}
                     className="me-2"
                     //as={Link}
-                    to={"/sign-in"}
                     onClick={this.handleLogout}
                   >
                     Log Out
@@ -84,7 +89,7 @@ class NavbarComp extends Component {
                 </Nav>
               </Navbar.Collapse>
             ) : (
-              <Button>Hi</Button>
+             <></> 
             )}
           </Navbar>
         </div>

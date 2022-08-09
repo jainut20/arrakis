@@ -66,11 +66,15 @@ function TradeTabledata() {
       
     },
     {
-        Header: "Settlement Date",
-        accessor: "settlementdate",
+      Header: "Settlement Date",
+      accessor: "settlementdate",
         
         
-      },
+    },
+    {
+      Header: "Action",
+      accessor: "action" 
+    }
   ];
 
   return (
@@ -85,12 +89,12 @@ function TradeTabledata() {
     </div>
     <div className="col col-lg-1">
         
-      <Button>Add</Button>
+      <Button onClick={()=>{window.location.href = "/addtrade"}}>Add</Button>
     </div>
     
   </div>
       
-      <Table columns={columns} data={data} />
+      <Table deleteHandler={()=>{console.log("delete called")}} columns={columns} data={[<button>Hey</button>]} />
       </div>
       
   );
