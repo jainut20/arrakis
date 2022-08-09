@@ -14,6 +14,8 @@ import SecTabledata from './SecTabledata';
 import Login from "./Login";
 import SignUp from "./Signup";
 import TradeTabledata from './TradeTabledata';
+//import Watchlist from './Watchlist';
+import CriticalSecurities from './CriticalSecurities';
 function NavbarComp() {
     
         return (
@@ -47,6 +49,7 @@ function NavbarComp() {
                         </NavDropdown>  
                                 
                          <Nav.Link as={Link} to="/watchlist">Watchlist</Nav.Link>
+                         <Nav.Link as={Link} to="/critical">Critical Bonds</Nav.Link>
 
                         </Nav>
                         <Nav>
@@ -69,6 +72,8 @@ function NavbarComp() {
                     <Route path="/sign-in" element={<Login/>}/>
                     <Route path="/sign-up" element={<SignUp/>} />
                     <Route path="/viewtrades" element={<TradeTabledata/>} />
+                    {/* <Route path="/watchlist" element={<Watchlist />} /> */}
+                    <Route path="/critical" element={<CriticalSecurities />} />
 
 
                     {/* <Route exact path="/" element={<Landing/>}/> */}

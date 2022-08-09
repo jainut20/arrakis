@@ -14,11 +14,7 @@ function TradeTabledata() {
     TradeServices.getTrades().then((res)=>{
       setData(res.data)
     }).catch((err) => console.log(err));
-    // axios("http://api.tvmaze.com/search/shows?q=girls")
-    //   .then((res) => {
-    //     setData(res.data);
-    //   })
-    //   .catch((err) => console.log(err));
+    
     console.log(data)
   }, []);
 
