@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Table from "./TableContainer";
 import { SelectColumnFilter } from "./Filter";
 import SecurityServices from "../services/SecurityService";
@@ -7,7 +6,7 @@ import { Button } from "react-bootstrap";
 
 
 
-function Tabledata() {
+function SecTabledata() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -71,15 +70,17 @@ function Tabledata() {
   ];
 
   return (
-    <div style={{padding:80}} class="container" >
-      <div class="row">
-    <div class="col-sm">
+    <div style={{padding:10}} className="container" >
+      <div className="row">
+    <div className="col-sm">
+      <center>
     <h4>
         Registered Bonds
       </h4>
+      </center>
     </div>
-    <div class="col col-lg-1">
-      <Button>ADD</Button>
+    <div className="col col-lg-1">
+      <Button>Add</Button>
     </div>
     
   </div>
@@ -89,4 +90,4 @@ function Tabledata() {
   );
 }
 
-export default Tabledata;
+export default SecTabledata;

@@ -25,7 +25,7 @@ export default function Table({ columns, data }) {
   );
 
   return (
-    <table {...getTableProps()} className="table table-striped">
+    <table style={{display:"block", overflow:"auto"}} {...getTableProps()} className="table table-striped">
       <thead>
          {headerGroups.map(headerGroup => (
              <tr {...headerGroup.getHeaderGroupProps()}>
@@ -33,7 +33,7 @@ export default function Table({ columns, data }) {
                    <th
                        {...column.getHeaderProps(column.getSortByToggleProps())}
                        style={{
-                         borderBottom: 'solid 3px red',
+                         borderBottom: 'solid 3px blue',
                          color: 'black',
                        }}
                    >

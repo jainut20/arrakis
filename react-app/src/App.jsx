@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
+
 import NavbarComp from "./components/Navbar";
-import SignUp from "./components/Signup";
-import Tabledata from "./components/Tabledata";
+
 
 const App = () => {
   return (

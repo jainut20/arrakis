@@ -67,7 +67,7 @@ export function SelectColumnFilter({
 
   // UI for Multi-Select box
   return (
-    <select
+    <select style={{ marginTop: "12px" , height: "37px"}}
       value={filterValue}
       onChange={(e) => {
         setFilter(e.target.value || undefined);

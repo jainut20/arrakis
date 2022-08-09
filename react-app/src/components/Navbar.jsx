@@ -10,9 +10,10 @@ import {
 
 //import DisplayTable from './View';
 //import Landing from './Landing';
-import Tabledata from './Tabledata';
+import SecTabledata from './SecTabledata';
 import Login from "./Login";
 import SignUp from "./Signup";
+import TradeTabledata from './TradeTabledata';
 function NavbarComp() {
     
         return (
@@ -20,7 +21,18 @@ function NavbarComp() {
                 <div>
                     
                     <Navbar bg="dark" variant={"dark"} expand="lg">
-                    <Container fluid>
+                    
+                    <Navbar.Brand href="#home">
+                        <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFqoXvD_MV9TozNgVaOen1vOreoMRvBSoeP1qtdDdZ1RF_ZUvI3TdY_az-omHcU524g84&usqp=CAU"
+                        
+                        height="70"
+                        className="d-inline-block align-top"
+                        alt="logo"
+                        />
+                    </Navbar.Brand>
+                    
+                        {/* <div className='row'></div> */}
                         <Navbar.Brand href="/"><h1>APP NAME</h1></Navbar.Brand>
                         <Navbar.Toggle aria-controls="navbarScroll" />
                         <Navbar.Collapse id="navbarScroll">
@@ -29,7 +41,7 @@ function NavbarComp() {
                                 style={{ maxHeight: '100px' }}
                                 navbarScroll
                             >
-                        <NavDropdown title="View" id="basic-nav-dropdown">
+                        <NavDropdown  title="View" id="basic-nav-dropdown">
                             <NavDropdown.Item as={Link} to="/">Securities</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="/viewtrades">Trades </NavDropdown.Item>
                         </NavDropdown>  
@@ -38,12 +50,12 @@ function NavbarComp() {
 
                         </Nav>
                         <Nav>
-                            <Button className="me-2" as={Link} to={'/sign-in'}>Log In</Button>
-                            <Button className="me-2" as={Link} to={'/sign-up'}>Sign Up</Button>
+                            <Button style={{ backgroundColor : 'darkblue'}} className="me-2" as={Link} to={'/sign-in'}>Log In</Button>
+                            <Button style={{ backgroundColor : 'darkblue'}} className="me-2" as={Link} to={'/sign-up'}>Sign Up</Button>
                         </Nav>
                             
                         </Navbar.Collapse>
-                        </Container> 
+                       
                     </Navbar>
                     
                 </div>
@@ -53,9 +65,10 @@ function NavbarComp() {
                     <Routes>
                     
 
-                    <Route exact path="/" element={<Tabledata/>}/>
+                    <Route exact path="/" element={<SecTabledata/>}/>
                     <Route path="/sign-in" element={<Login/>}/>
                     <Route path="/sign-up" element={<SignUp/>} />
+                    <Route path="/viewtrades" element={<TradeTabledata/>} />
 
 
                     {/* <Route exact path="/" element={<Landing/>}/> */}
