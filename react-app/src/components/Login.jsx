@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Container from "react-bootstrap/Container";
+import "./style.css";
 
 export default class Login extends Component {
   render() {
     return (
-      <Container>
-      <form>
-        <h3>Sign In</h3>
+      <Container className="logg col-md-5 mx-auto my-auto">
+      <form >
+        <h3>SIGN IN</h3>
         <div className="mb-3">
           <label>Email address</label>
           <input
@@ -29,7 +30,7 @@ export default class Login extends Component {
               type="checkbox"
               className="custom-control-input"
               id="customCheck1"
-            />
+            /> 
             <label className="custom-control-label" htmlFor="customCheck1">
               Remember me
             </label>

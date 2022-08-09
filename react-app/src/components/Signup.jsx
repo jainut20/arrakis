@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import "../index.css"
+import "./style.css";
+
 export default class SignUp extends Component {
   render() {
     return (
-      <Container className="col-md-5 mx-auto my-auto ">
-        <Card >
+      <Container className=" container col-md-5 mx-auto my-auto ">
+       
           <form>
-            <h3>Sign Up</h3>
+            <h3>SIGN UP</h3>
             <div className="mb-3">
               <label>First name</label>
               <input
@@ -50,7 +52,7 @@ export default class SignUp extends Component {
               Already registered <a href="/sign-in">sign in?</a>
             </p>
           </form>
-        </Card>
+        
       </Container>
     );
   }

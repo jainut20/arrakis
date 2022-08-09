@@ -1,0 +1,67 @@
+form {
+    width: 100%;
+  
+  }
+  h3{
+    text-align: center;
+  }
+  
+
+ form  {
+    position: absolute;
+    width: 350px;
+    height: 575px;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    padding:rem;
+    margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 150px;
+    justify-content: center;
+
+  }
+
+  .container{
+    align-content: center;
+    margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 150px;
+    padding:rem;
+    justify-content: center;
+  }
+  .logg{
+    margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 150px;
+  padding: rem;
+  }
+
+  #customCheck1 {
+    position: relative;
+    top: 10;
+    left: 50;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+
+  .mb-3{
+        text-align: left;
+        margin-top: 30px;  
+  }
+
+  label, input, button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+  }
+  
