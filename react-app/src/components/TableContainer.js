@@ -49,6 +49,12 @@ export default function Table(props) {
                     <div>{column.canFilter ? column.render('Filter') : null}</div>
                    </th>
                ))}
+               <th style={{
+                         borderBottom: 'solid 3px blue',
+                         position:'relative',
+                         bottom:'50px',
+                         color: 'black',
+                       }}>Action</th>
              </tr>
          ))}
          <tr>
@@ -76,7 +82,11 @@ export default function Table(props) {
                 return <td style={{color: cell.column.Header != "Status"? "black" : "black"  || (cell.row.values.status === "ACTIVE" && cell.column.Header ==="Status" )? "green" : "red"}} {...cell.getCellProps()}>{cell.render("Cell")}</td>;
 
               })}
-              <td><button onClick={()=>{props.handleDelete(row.cells[0].value)}} payload>Delete</button></td>
+              <td><button className="btn btn-sm btn-outline-danger" onClick={()=>{props.handleDelete(row.cells[0].value)}} payload>Delete</button>
+              {props.showAdd==="true"?
+              <button className="btn btn-sm btn-outline-primary mt-2" onClick={()=>{props.handleAdd(row.cells[0].value)}} payload>Add To Watchlist</button>
+              :<></>}
+              </td>
             </tr>
           );
         })}

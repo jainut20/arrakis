@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "./TableContainer";
 import { SelectColumnFilter } from "./Filter";
 import SecurityServices from "../services/SecurityService";
+import WatchListServices from "../services/WatchListServices"
 import { Button } from "react-bootstrap";
 
 
@@ -75,19 +76,25 @@ function SecTabledata() {
     <div className="col-sm">
       <center>
     <h4>
-        Registered Bonds
+        REGISTERED BONDS
       </h4>
       </center>
     </div>
-    <div className="col col-lg-1">
-      <Button>Add</Button>
+    <div className="col col-md-2">
+      <Button className="btn btn-sm">Add New Bond</Button>
     </div>
     
   </div>
       
-      <Table handleDelete={(data)=>{console.log(`delete called on ${data}`)}} columns={columns} data={data} />
+      <Table showAdd = "true" handleAdd = {(securityid)=>{addWL(securityid)}} handleDelete={(data)=>{console.log(`delete called on ${data}`)}} columns={columns} data={data} />
     </div>
   );
 }
 
+const addWL = (securityid)=>{
+  WatchListServices.addToWatchList(securityid,
+  JSON.parse(localStorage.getItem("user")).id).then(
+    (res)=>console.log(res.data)
+  );
+}
 export default SecTabledata;

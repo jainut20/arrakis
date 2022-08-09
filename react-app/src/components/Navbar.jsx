@@ -42,7 +42,7 @@ class NavbarComp extends Component {
               />
             </Navbar.Brand>
             <Navbar.Brand href="/" onClick={this.handleLogout}>
-              <h1>BONDS</h1>
+              <h2>Easy Bonds</h2>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             {currUser.email ? (

@@ -68,12 +68,6 @@ function TradeTabledata() {
     {
       Header: "Settlement Date",
       accessor: "settlementdate",
-        
-        
-    },
-    {
-      Header: "Action",
-      accessor: "action" 
     }
   ];
 
@@ -83,7 +77,7 @@ function TradeTabledata() {
     <div className="col-sm">
       <center>
     <h4>
-        Registered Trades
+        REGISTERED TRADES
       </h4>
       </center>
     </div>
