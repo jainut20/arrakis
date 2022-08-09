@@ -8,6 +8,7 @@ import TradeTabledata from "./components/TradeTabledata";
 import WatchlistTable from "./components/WatchlistTable";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
+import CriticalSecurities from "./components/CriticalSecurities";
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class App extends Component {
   }
   render() {
     const currentUser = UserAuthService.getUser();
-    console.log(sessionStorage.getItem("user"))
+    console.log(sessionStorage.getItem("user"));
     return (
       <Router>
         <div>
@@ -28,6 +29,7 @@ class App extends Component {
             <Route path="/addtrade" element={<AddTrade />} />
             <Route path="/viewsecurity" element={<SecTabledata />} />
             <Route path="/watchlist" element={<WatchlistTable />} />
+            <Route path="/criticalbonds" element={<CriticalSecurities />} />
           </Routes>
         </div>
       </Router>

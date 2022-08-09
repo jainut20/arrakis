@@ -23,7 +23,7 @@ class NavbarComp extends Component {
   }
   handleLogout() {
     UserAuthService.logout();
-    window.location.href = "/sign-in"
+    window.location.href = "/sign-in";
     console.log("logout");
   }
   render() {
@@ -53,27 +53,43 @@ class NavbarComp extends Component {
                   navbarScroll
                 >
                   <NavDropdown title="View" id="basic-nav-dropdown">
-                    <NavDropdown.Item 
-                    onClick={()=>{window.location.href = "/viewsecurity"}}
-                    // to="/"
+                    <NavDropdown.Item
+                      onClick={() => {
+                        window.location.href = "/viewsecurity";
+                      }}
+                      // to="/"
                     >
                       Securities
                     </NavDropdown.Item>
-                    <NavDropdown.Item 
-                    //as={Link} 
-                    onClick={()=>{window.location.href = "/viewtrades"}}
-                    // to="/viewtrades"
+                    <NavDropdown.Item
+                      //as={Link}
+                      onClick={() => {
+                        window.location.href = "/viewtrades";
+                      }}
+                      // to="/viewtrades"
                     >
                       Trades{" "}
                     </NavDropdown.Item>
                   </NavDropdown>
 
-                  <Nav.Link 
-                  //as={Link} 
-                  onClick={()=>{window.location.href = "/watchlist"}}
-                  // to="/watchlist"
+                  <Nav.Link
+                    //as={Link}
+                    onClick={() => {
+                      window.location.href = "/watchlist";
+                    }}
+                    // to="/watchlist"
                   >
                     Watchlist
+                  </Nav.Link>
+
+                  <Nav.Link
+                    //as={Link}
+                    onClick={() => {
+                      window.location.href = "/criticalbonds";
+                    }}
+                    // to="/watchlist"
+                  >
+                    Critical Bonds
                   </Nav.Link>
                 </Nav>
                 <Nav>
@@ -85,18 +101,16 @@ class NavbarComp extends Component {
                   >
                     Log Out
                   </Button>
-
                 </Nav>
               </Navbar.Collapse>
             ) : (
-             <></> 
+              <></>
             )}
           </Navbar>
         </div>
-        
       </div>
     );
-  }                 
+  }
 }
 
 export default NavbarComp;
