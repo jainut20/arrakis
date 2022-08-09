@@ -1,1 +1,3 @@
-export const hostNameUrl = "https://<PROJECT-ID>.<REGION>.r.appspot.com";
+export const hostNameUrl = "https://db-grads-25q5-group-18.nw.r.appspot.com";
+
+//"https://db-grads-25q5-group-18.nw.r.appspot.com";

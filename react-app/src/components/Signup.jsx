@@ -1,34 +1,135 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import "../index.css"
+import "../index.css";
+import UserAuthService from "../services/UserAuthService";
+import Modal from 'react-bootstrap/Modal';
+
 export default class SignUp extends Component {
+  constructor(props) {
+    super(props);
+    this.handleRegister = this.handleRegister.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+      errors: {},
+    };
+  }
+
+  onChangeEmail(e) {
+    this.setState({
+      email: e.target.value,
+    });
+  }
+
+  onChangeUsername(e) {
+    this.setState({
+      username: e.target.value,
+    });
+  }
+  handleValidation() {
+    let name = this.state.username
+    let email = this.state.email
+    let errors = {};
+    let formIsValid = true;
+
+    //Name
+    if (!name) {
+      formIsValid = false;
+      errors["name"] = "Cannot be empty";
+      console.log(this.state.username)
+    }
+
+    // if (typeof name !== "undefined") {
+    //   if (name.match(/^[a-zA-Z]+$/)) {
+    //     formIsValid = false;
+    //     errors["name"] = "Only letters";
+    //     console.log('name 2')
+    //   }
+      
+    // }
+
+    //Email
+    if (!email) {
+      formIsValid = false;
+      errors["email"] = "Cannot be empty";
+      console.log('email')
+    }
+
+    // if (typeof email !== "undefined") {
+    //   let lastAtPos = email.lastIndexOf("@");
+    //   let lastDotPos = email.lastIndexOf(".");
+
+    //   if (
+    //     !(
+    //       lastAtPos < lastDotPos &&
+    //       lastAtPos > 0 &&
+    //       email.indexOf("@@") == -1 &&
+    //       lastDotPos > 2 &&
+    //       email.length - lastDotPos > 2
+    //     )
+    //   ) {
+    //     formIsValid = false;
+    //     errors["email"] = "Email is not valid";
+    //   }
+    //   console.log('email 2')
+    // }
+
+    this.setState({ errors: errors });
+    return formIsValid;
+  }
+  onChangePassword(e) {
+    this.setState({
+      password: e.target.value,
+    });
+  }
+
+  handleRegister(e) {
+    e.preventDefault();
+
+    if (this.handleValidation()) {
+      UserAuthService.register(
+        this.state.username,
+        this.state.email,
+        this.state.password
+      ).then(() => {
+        window.location.href = '/view'
+        
+      });
+    }
+    else{
+      window.prompt('error')
+    }
+  }
   render() {
     return (
       <Container className="col-md-5 mx-auto my-auto ">
-        <Card >
-          <form>
+        <Card>
+          <form onSubmit={this.handleRegister}>
             <h3>Sign Up</h3>
             <div className="mb-3">
-              <label>First name</label>
+              <label>Name</label>
               <input
                 type="text"
+                onChange={this.onChangeUsername}
+                value={this.state.username}
                 className="form-control"
-                placeholder="First name"
-              />
-            </div>
-            <div className="mb-3">
-              <label>Last name</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Last name"
+                placeholder="Name"
+                name="username"
               />
             </div>
             <div className="mb-3">
               <label>Email address</label>
               <input
                 type="email"
+                value={this.state.email}
+                onChange={this.onChangeEmail}
+                name="email"
                 className="form-control"
                 placeholder="Enter email"
               />
@@ -37,6 +138,9 @@ export default class SignUp extends Component {
               <label>Password</label>
               <input
                 type="password"
+                value={this.state.password}
+                onChange={this.onChangePassword}
+                name="password"
                 className="form-control"
                 placeholder="Enter password"
               />
