@@ -71,9 +71,9 @@ export default function Table({ columns, data }) {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                console.log(cell.render("Cell").props.headers[0][8])
-                return <td  {...cell.getCellProps()}>{cell.render("Cell")}
-                {/* style={{color: cell.value === "ACTIVE" ? "green" : "red"}} */}
+                console.log(cell.column.Header)
+                return <td   style={{color: cell.column.Header != "Status"? "black" : "black"  || (cell.row.values.status === "ACTIVE" && cell.column.Header ==="Status" )? "green" : "red"}} {...cell.getCellProps()}>{cell.render("Cell")}
+               
                 </td>;
               })}
             </tr>

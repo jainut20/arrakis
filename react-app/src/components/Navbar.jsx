@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+//import { BrowserRouter as Link } from "react-router-dom";
 import UserAuthService from "../services/UserAuthService";
 class NavbarComp extends Component {
   constructor(props) {
@@ -40,7 +40,6 @@ class NavbarComp extends Component {
                 alt="logo"
               />
             </Navbar.Brand>
-
             <Navbar.Brand href="/" onClick={this.handleLogout}>
               <h1>BONDS</h1>
             </Navbar.Brand>
@@ -53,15 +52,21 @@ class NavbarComp extends Component {
                   navbarScroll
                 >
                   <NavDropdown title="View" id="basic-nav-dropdown">
-                    <NavDropdown.Item as={Link} to="/viewsecurity">
+                    <NavDropdown.Item 
+                    //as={Link} 
+                    to="/viewsecurity">
                       Securities
                     </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/viewtrades">
+                    <NavDropdown.Item 
+                    //as={Link} 
+                    to="/viewtrades">
                       Trades{" "}
                     </NavDropdown.Item>
                   </NavDropdown>
 
-                  <Nav.Link as={Link} to="/watchlist">
+                  <Nav.Link 
+                  //as={Link} 
+                  to="/watchlist">
                     Watchlist
                   </Nav.Link>
                 </Nav>
@@ -69,21 +74,13 @@ class NavbarComp extends Component {
                   <Button
                     style={{ backgroundColor: "darkblue" }}
                     className="me-2"
-                    as={Link}
+                    //as={Link}
                     to={"/sign-in"}
                     onClick={this.handleLogout}
                   >
                     Log Out
                   </Button>
 
-                  {/* <Button
-                  style={{ backgroundColor: "darkblue" }}
-                  className="me-2"
-                  as={Link}
-                  to={"/sign-up"}
-                >
-                  Sign Up
-                </Button> */}
                 </Nav>
               </Navbar.Collapse>
             ) : (
@@ -91,18 +88,10 @@ class NavbarComp extends Component {
             )}
           </Navbar>
         </div>
-        <div>
-          {/* <Routes>
-            <Route exact path="/" element={<SignUp />} />
-            <Route path="/sign-in" element={<Login />} />
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/viewtrades" element={<TradeTabledata />} />
-            <Route path="/viewsecurity" element={<SecTabledata />} />
-          </Routes> */}
-        </div>
+        
       </div>
     );
-  }
+  }                 
 }
 
 export default NavbarComp;
