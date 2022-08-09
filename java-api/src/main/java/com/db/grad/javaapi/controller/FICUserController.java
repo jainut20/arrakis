@@ -5,6 +5,9 @@ import com.db.grad.javaapi.repository.FICUsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class FICUserController {
@@ -25,6 +28,10 @@ public class FICUserController {
         return 1;
     }
 
+    @GetMapping("/user/getall")
+    public List<FICUser> findALL(){
+        return usersRepository.findAll();
+    }
     @PostMapping("/user/login")
     public FICUser findUser(@RequestBody LoginCredentials credentials){
         try {
