@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Table from "./TableContainer";
 import { SelectColumnFilter } from "./Filter";
-import TradeServices from "../services/TradeServices";
 import SecurityServices from "../services/SecurityService";
 
 import { Button } from "react-bootstrap";
