@@ -3,6 +3,7 @@ INSERT INTO dogs (id, name, age) VALUES (2, 'Kaya', 5);
 INSERT INTO BOOK (id,bookname) VALUES (1,'TEJAS_BOOK');
 INSERT INTO BOOK (id,bookname) VALUES (2,'UTKARSH_BOOK');
 
+
 INSERT INTO SECURITY (id,isin,cusip,issuer,maturitydate,coupon,type,facevalue,status) VALUES
                      (1,'ABCE342','23EDJHH','RIL','2022-01-02','ABC','GOVT',1000,'ACTIVE');
 

@@ -28,10 +28,10 @@ public class WatchListController {
         return watchListRepository.saveAndFlush(watchList);
     }
 
-    @DeleteMapping("watchlist/delete/{securityid}")
-    public Map< String, Boolean > deleteWL(@PathVariable(value = "securityid") Long securityid)
+    @DeleteMapping("watchlist/delete/{securityid}/{userid}")
+    public Map< String, Boolean > deleteWL(@PathVariable(value = "securityid") Long securityid,@PathVariable(value = "userid") Long userid)
             throws Exception {
-        WatchList watchList = watchListRepository.findBySecurityid(securityid);
+        WatchList watchList = watchListRepository.findWatchList(securityid,userid);
         watchListRepository.delete(watchList);
         Map < String, Boolean > response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
