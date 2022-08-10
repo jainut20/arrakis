@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface WatchListRepository extends JpaRepository<WatchList,Long> {
     public List<WatchList> findByUserid(long userid);
+    public WatchList findBySecurityid(long securityid);
 }

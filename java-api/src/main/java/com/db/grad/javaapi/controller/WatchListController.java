@@ -28,12 +28,10 @@ public class WatchListController {
         return watchListRepository.saveAndFlush(watchList);
     }
 
-    @DeleteMapping("watchlist/delete/{id}")
-    public Map< String, Boolean > deleteSecurity(@PathVariable(value = "id") Long id)
+    @DeleteMapping("watchlist/delete/{securityid}")
+    public Map< String, Boolean > deleteWL(@PathVariable(value = "securityid") Long securityid)
             throws Exception {
-        WatchList watchList = watchListRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Security not found for this id :: " + id));
-
+        WatchList watchList = watchListRepository.findBySecurityid(securityid);
         watchListRepository.delete(watchList);
         Map < String, Boolean > response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
