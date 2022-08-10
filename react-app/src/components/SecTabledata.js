@@ -93,7 +93,7 @@ function SecTabledata() {
 
 const deleteSecurity = (securityid) =>{
   SecurityServices.deleteSecurity(securityid).then((res)=>{
-     window.location.href = '/viewsecurity'
+     window.location.href = '/viewsecurity' 
   }
   )
 }
