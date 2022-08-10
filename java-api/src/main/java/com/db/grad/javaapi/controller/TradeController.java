@@ -1,6 +1,8 @@
 package com.db.grad.javaapi.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -78,5 +80,17 @@ public class TradeController {
     		final Trade new_trade_details = tradeRepository.save(trade);
     		return ResponseEntity.ok(new_trade_details);
     }
+
+	@DeleteMapping("/trade/delete/{id}")
+	public Map< String, Boolean > deleteSecurity(@PathVariable(value = "id") Long id)
+			throws Exception {
+		Trade trade = tradeRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Security not found for this id :: " + id));
+
+		tradeRepository.delete(trade);
+		Map < String, Boolean > response = new HashMap<>();
+		response.put("deleted", Boolean.TRUE);
+		return response;
+	}
 
 }
