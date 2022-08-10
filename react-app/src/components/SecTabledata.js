@@ -93,7 +93,9 @@ function SecTabledata() {
 }
 
 const deleteSecurity = (securityid) => {
+  Notiflix.Loading.standard()
   SecurityServices.deleteSecurity(securityid).then((res) => {
+    Notiflix.Loading.remove();
     window.location.href = '/viewsecurity'
   })
 }
