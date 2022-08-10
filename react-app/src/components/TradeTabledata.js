@@ -56,7 +56,7 @@ function TradeTabledata() {
     },
     {
       Header: "Buy_Sell",
-      accessor: "buy_sell",
+      accessor: "buysell",
       Filter: SelectColumnFilter,
     },
     {
@@ -88,7 +88,7 @@ function TradeTabledata() {
     
   </div>
       
-      <Table deleteHandler={()=>{console.log("delete called")}} columns={columns} data={[<button>Hey</button>]} />
+      <Table deleteHandler={()=>{console.log("delete called")}} columns={columns} data={data  } />
       </div>
       
   );

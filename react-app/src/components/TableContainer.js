@@ -79,7 +79,7 @@ export default function Table(props) {
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
                 console.log(cell.column.Header)
-                return <td style={{color: cell.column.Header != "Status"? "black" : "black"  || (cell.row.values.status === "ACTIVE" && cell.column.Header ==="Status" )? "green" : "red"}} {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                return <td style={{color: cell.column.Header !== "Status"? "black" : "black"  || (cell.row.values.status === 'COMPLETED' && cell.column.Header ==="Status" )? "green" : "red"}} {...cell.getCellProps()}>{cell.render("Cell")}</td>;
 
               })}
               <td><button className="btn btn-sm btn-outline-danger" onClick={()=>{props.handleDelete(row.cells[0].value)}} payload>Delete</button>
