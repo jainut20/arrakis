@@ -80,17 +80,23 @@ function SecTabledata() {
       </h4>
       </center>
     </div>
-    <div className="col col-md-2">
+    {/* <div className="col col-md-2">
       <Button className="btn btn-sm">Add New Bond</Button>
-    </div>
+    </div> */}
     
   </div>
       
-      <Table showAdd = "true" handleAdd = {(securityid)=>{addWL(securityid)}} handleDelete={(data)=>{console.log(`delete called on ${data}`)}} columns={columns} data={data} />
+      <Table showAdd = "true" handleAdd = {(securityid)=>{addWL(securityid)}} handleDelete={(securityid)=>{deleteSecurity(securityid)}} columns={columns} data={data} />
     </div>
   );
 }
 
+const deleteSecurity = (securityid) =>{
+  SecurityServices.deleteSecurity(securityid).then((res)=>{
+     window.location.href = '/viewsecurity'
+  }
+  )
+}
 const addWL = (securityid)=>{
   WatchListServices.addToWatchList(securityid,
   JSON.parse(localStorage.getItem("user")).id).then(
