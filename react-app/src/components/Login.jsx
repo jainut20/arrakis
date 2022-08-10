@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 
 import UserAuthService from "../services/UserAuthService";
+import Notiflix from 'notiflix';
 
 import "./style.css";
 
@@ -31,16 +32,16 @@ export default class Login extends Component {
   }
   handleLogin(e) {
     e.preventDefault();
+    Notiflix.Loading.standard()
     UserAuthService.login(this.state.email, this.state.password).then(
       (response) => {
-        console.log("login");
-        console.log(response);
         if (response) {
-          console.log("login success");
-          
+          Notiflix.Loading.remove();
           // this.props.history.push("/viewsecurity")
           window.location.href = '/viewsecurity'
         } else {
+          Notiflix.Loading.remove();
+          Notiflix.Notify.failure("Invalid login credentials.")
           console.log(this.state.email);
         }
       }

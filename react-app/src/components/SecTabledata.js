@@ -4,6 +4,7 @@ import { SelectColumnFilter } from "./Filter";
 import SecurityServices from "../services/SecurityService";
 import WatchListServices from "../services/WatchListServices"
 import { Button } from "react-bootstrap";
+import Notiflix from "notiflix";
 
 
 
@@ -11,7 +12,7 @@ function SecTabledata() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    SecurityServices.getAllSecurity().then((res)=>{
+    SecurityServices.getAllSecurity().then((res) => {
       setData(res.data)
     }).catch((err) => console.log(err));
     // axios("http://api.tvmaze.com/search/shows?q=girls")
@@ -42,13 +43,13 @@ function SecTabledata() {
     {
       Header: "Maturity Date",
       accessor: "maturitydate",
-      
+
     },
     {
       Header: "Coupon",
       accessor: "coupon",
       // disable the filter for particular column
-      
+
       Cell: ({ cell: { value } }) => value || "-",
     },
     {
@@ -65,42 +66,50 @@ function SecTabledata() {
       accessor: "status",
       Filter: SelectColumnFilter,
       filter: "includes"
-      
+
     },
-    
+
   ];
 
   return (
-    <div style={{padding:10}} className="container" >
+    <div style={{ padding: 10 }} className="container" >
       <div className="row">
-    <div className="col-sm">
-      <center>
-    <h4>
-        REGISTERED BONDS
-      </h4>
-      </center>
-    </div>
-    {/* <div className="col col-md-2">
+
+        <div className="col-sm">
+          <center>
+            <h4>
+              REGISTERED BONDS
+            </h4>
+          </center>
+        </div>
+        {/* <div className="col col-md-2">
       <Button className="btn btn-sm">Add New Bond</Button>
     </div> */}
-    
-  </div>
-      
-      <Table showAdd = "true" handleAdd = {(securityid)=>{addWL(securityid)}} handleDelete={(securityid)=>{deleteSecurity(securityid)}} columns={columns} data={data} />
-    </div>
+      </div>
+
+      <Table showAdd="true" handleAdd={(securityid) => { addWL(securityid) }} handleDelete={(securityid) => { deleteSecurity(securityid) }} columns={columns} data={data} />
+    </div >
   );
 }
 
-const deleteSecurity = (securityid) =>{
-  SecurityServices.deleteSecurity(securityid).then((res)=>{
-     window.location.href = '/viewsecurity' 
-  }
-  )
+const deleteSecurity = (securityid) => {
+  Notiflix.Loading.standard()
+  SecurityServices.deleteSecurity(securityid).then((res) => {
+    Notiflix.Loading.remove();
+    window.location.href = '/viewsecurity'
+  })
 }
-const addWL = (securityid)=>{
+const addWL = (securityid) => {
+  Notiflix.Loading.standard()
   WatchListServices.addToWatchList(securityid,
-  JSON.parse(localStorage.getItem("user")).id).then(
-    (res)=>console.log(res.data)
-  );
+    JSON.parse(localStorage.getItem("user")).id).then(
+      (res) => {
+        Notiflix.Loading.remove();
+        Notiflix.Notify.success("Added to watchlist")
+        console.log(res.data)
+      }).catch(err => {
+        Notiflix.Loading.remove();
+        Notiflix.Notify.success("There was some error")
+      })
 }
 export default SecTabledata;
