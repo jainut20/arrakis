@@ -13,18 +13,16 @@ function TradeTabledata() {
   useEffect(() => {
     WatchListServices.getWatchListByUserId(
       JSON.parse(localStorage.getItem("user")).id
-    )
-      .then((res) => {
-        let watch = [];
-        SecurityServices.getAllSecurity().then((res1) => {
-          res.data.forEach((el) => {
-            watch.push(res1.data.find((e) => e.id === el.securityid));
-            console.log(watch);
-          });
-          console.log(watch);
-          setData(watch);
+    ).then((res) => {
+      console.log(res)
+      let watch = [];
+      SecurityServices.getAllSecurity().then((res1) => {
+        res.data.forEach((el) => {
+          watch.push(res1.data.find((e) => e.id === el.securityid));
         });
-      })
+        setData(watch);
+      });
+    })
       .catch((err) => console.log(err));
 
     console.log(data);
@@ -36,46 +34,44 @@ function TradeTabledata() {
       accessor: "id",
     },
     {
-      Header: "Book ID",
-      accessor: "bookid",
+      Header: "ISIN",
+      accessor: "isin",
     },
     {
-      Header: "Counterparty ID",
-      accessor: "counterpartyid",
+      Header: "CUSIP",
+      accessor: "cusip",
     },
     {
-      Header: "Security ID",
-      accessor: "securityid",
+      Header: "Issuer",
+      accessor: "issuer",
       Cell: ({ cell: { value } }) => value || "-",
     },
     {
-      Header: "Quantity",
-      accessor: "quantity",
+      Header: "Maturity Date",
+      accessor: "maturitydate",
+      
+    },
+    {
+      Header: "Coupon",
+      accessor: "coupon",
+      // disable the filter for particular column
+      
+      Cell: ({ cell: { value } }) => value || "-",
+    },
+    {
+      Header: "Type",
+      accessor: "type",
+      Filter: SelectColumnFilter,
+    },
+    {
+      Header: "Face Value",
+      accessor: "facevalue",
     },
     {
       Header: "Status",
       accessor: "status",
       Filter: SelectColumnFilter,
-      // disable the filter for particular column
-
-      Cell: ({ cell: { value } }) => value || "-",
-    },
-    {
-      Header: "Price",
-      accessor: "price",
-    },
-    {
-      Header: "Buy_Sell",
-      accessor: "buy_sell",
-      Filter: SelectColumnFilter,
-    },
-    {
-      Header: "Trade Date",
-      accessor: "tradedate",
-    },
-    {
-      Header: "Settlement Date",
-      accessor: "settlementdate",
+      filter: "includes"
     },
   ];
 

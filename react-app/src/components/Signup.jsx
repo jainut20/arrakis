@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-
+import Notiflix from 'notiflix';
 import "../index.css";
 import UserAuthService from "../services/UserAuthService";
 import Modal from "react-bootstrap/Modal";
@@ -64,26 +64,6 @@ export default class SignUp extends Component {
       errors["email"] = "Cannot be empty";
       console.log("email");
     }
-
-    // if (typeof email !== "undefined") {
-    //   let lastAtPos = email.lastIndexOf("@");
-    //   let lastDotPos = email.lastIndexOf(".");
-
-    //   if (
-    //     !(
-    //       lastAtPos < lastDotPos &&
-    //       lastAtPos > 0 &&
-    //       email.indexOf("@@") == -1 &&
-    //       lastDotPos > 2 &&
-    //       email.length - lastDotPos > 2
-    //     )
-    //   ) {
-    //     formIsValid = false;
-    //     errors["email"] = "Email is not valid";
-    //   }
-    //   console.log('email 2')
-    // }
-
     this.setState({ errors: errors });
     return formIsValid;
   }
@@ -95,7 +75,7 @@ export default class SignUp extends Component {
 
   handleRegister(e) {
     e.preventDefault();
-
+    Notiflix.Loading.standard()
     if (this.handleValidation()) {
       UserAuthService.register(
         this.state.username,
@@ -103,10 +83,12 @@ export default class SignUp extends Component {
         this.state.password
       ).then((response) => {
         // this.props.history.push("/sign-in")
+        Notiflix.Loading.remove();
         window.location.href = "/sign-in"
-        console.log(response)
       });
     } else {
+      Notiflix.Loading.remove();
+      Notiflix.Notify.failure("There were some errors during sign-up");
       <div className="form-group alert alert-danger" role="alert">error</div>
     }
   }
