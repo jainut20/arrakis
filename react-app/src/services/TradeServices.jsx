@@ -28,12 +28,17 @@ const updateTrade = (tradeid, trade) => {
   });
 };
 
+const deleteTrade = (tradeid) => {
+  console.log(tradeid);
+};
+
 const TradeServices = {
   getTrades: getTrades,
   getTradeById: getTradeById,
   getSecurityByTradeId: getSecurityByTradeId,
   addTrade: addTrade,
   updateTrade: updateTrade,
+  deleteTrade: deleteTrade,
 };
 
 export default TradeServices;

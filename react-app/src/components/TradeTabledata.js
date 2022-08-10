@@ -88,10 +88,14 @@ function TradeTabledata() {
     
   </div>
       
-      <Table deleteHandler={()=>{console.log("delete called")}} columns={columns} data={data  } />
+      <Table handleDelete={(tradeid)=>{deleteTrade(tradeid)}} columns={columns} data={data  } />
       </div>
       
   );
+}
+
+const deleteTrade = (tradeid)=>{
+  TradeServices.deleteTrade(tradeid);
 }
 
 export default TradeTabledata;
