@@ -29,7 +29,7 @@ const updateTrade = (tradeid, trade) => {
 };
 
 const deleteTrade = (tradeid) => {
-  console.log(tradeid);
+  return axios.delete(`${baseURL}/trade/delete/${tradeid}`);
 };
 
 const TradeServices = {

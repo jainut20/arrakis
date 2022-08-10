@@ -19,7 +19,6 @@ const CriticalSecurities = () => {
   }, []);
   return (
     <>
-    
       {/* {criticalSecurities.map((security) => (
         <div key={security.id}>
           <div>ID: {security.id}</div>
@@ -31,47 +30,42 @@ const CriticalSecurities = () => {
         </div>
       ))} */}
       <div className="container">
-      <div className="col-sm">
-      <center>
-    <h4 style={{color:"red"}}> 
-        Critical Bonds
-      </h4>
-      </center>
-    </div>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th >ID</th>
-                            <th>ISON</th>
-                            <th>CUSIP</th>
-                            <th>Issuer</th>
-                            <th>Maturity Date</th>
-                            <th>Coupon</th>
-                            <th>Type</th>
-                            <th>Face Value</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {criticalSecurities.map((security) => (
-                      <tr key={security.id}>
-                      <td>{security.id}</td>
-                      <td>{security.isin}</td>
-                      <td>{security.cusip}</td>
-                      <td>{security.issuer}</td>
-                      <td>{security.maturitydate}</td>
-                      <td>{security.coupon}</td>
-                      <td>{security.type}</td>
-                      <td>{security.facevalue}</td>
-                      <td>{security.status}</td>
-                      </tr>
-                     ))}
-                    </tbody>
-                </table>
-            </div>
-      
-
-
+        <div className="col-sm mb-5">
+          <center>
+            <h4>Critical Bonds</h4>
+          </center>
+        </div>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>ISON</th>
+              <th>CUSIP</th>
+              <th>Issuer</th>
+              <th>Maturity Date</th>
+              <th>Coupon</th>
+              <th>Type</th>
+              <th>Face Value</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {criticalSecurities.map((security) => (
+              <tr key={security.id}>
+                <td>{security.id}</td>
+                <td>{security.isin}</td>
+                <td>{security.cusip}</td>
+                <td>{security.issuer}</td>
+                <td>{security.maturitydate}</td>
+                <td>{security.coupon}</td>
+                <td>{security.type}</td>
+                <td>{security.facevalue}</td>
+                <td>{security.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
