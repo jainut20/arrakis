@@ -74,6 +74,7 @@ function SecTabledata() {
   return (
     <div style={{ padding: 10 }} className="container" >
       <div className="row">
+
         <div className="col-sm">
           <center>
             <h4>
@@ -81,19 +82,23 @@ function SecTabledata() {
             </h4>
           </center>
         </div>
-        <div className="col col-md-2">
-          <Button className="btn btn-sm">Add New Bond</Button>
-        </div>
-
+        {/* <div className="col col-md-2">
+      <Button className="btn btn-sm">Add New Bond</Button>
+    </div> */}
       </div>
 
-      <Table showAdd="true" handleAdd={(securityid) => { addWL(securityid) }} handleDelete={(data) => { console.log(`delete called on ${data}`) }} columns={columns} data={data} />
-    </div>
+      <Table showAdd="true" handleAdd={(securityid) => { addWL(securityid) }} handleDelete={(securityid) => { deleteSecurity(securityid) }} columns={columns} data={data} />
+    </div >
   );
 }
 
+const deleteSecurity = (securityid) => {
+  SecurityServices.deleteSecurity(securityid).then((res) => {
+    window.location.href = '/viewsecurity'
+  })
+}
 const addWL = (securityid) => {
-  Notiflix.Loading.standard();
+  Notiflix.Loading.standard()
   WatchListServices.addToWatchList(securityid,
     JSON.parse(localStorage.getItem("user")).id).then(
       (res) => {

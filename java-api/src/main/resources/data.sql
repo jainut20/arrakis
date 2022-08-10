@@ -18,3 +18,15 @@ INSERT INTO SECURITY (id,isin,cusip,issuer,maturitydate,coupon,type,facevalue,st
 
 INSERT INTO SECURITY (id,isin,cusip,issuer,maturitydate,coupon,type,facevalue,status) VALUES
                      (5,'FURHF2351','23EDJHH','RIL','2022-01-02','ABC','PVT',4435.2,'ACTIVE');
+
+INSERT INTO TRADE (id,bookid,counterpartyid,securityid, quantity, status, price, buysell, tradedate, settlementdate)
+            VALUES (2,1,2,3,10,'COMPLETED',40.5,'SELL','2022-07-03','2022-07-04');
+
+INSERT INTO TRADE (id,bookid,counterpartyid,securityid, quantity, status, price, buysell, tradedate, settlementdate)
+            VALUES (3,2,2,2,4,'PROCESSING',2000,'BUY','2022-08-09','2022-08-11');
+
+INSERT INTO TRADE (id,bookid,counterpartyid,securityid, quantity, status, price, buysell, tradedate, settlementdate)
+            VALUES (4,1,2,4,4,'COMPLETED',1000,'BUY','2022-06-01','2022-06-02');
+
+INSERT INTO TRADE (id,bookid,counterpartyid,securityid, quantity, status, price, buysell, tradedate, settlementdate)
+            VALUES (5,2,3,5,3,'COMPLETED',200.5,'BUY','2022-05-11','2022-05-12');
