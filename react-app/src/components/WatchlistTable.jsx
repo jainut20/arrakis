@@ -10,16 +10,18 @@ function TradeTabledata() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    console.log(JSON.parse(localStorage.getItem("user")).id);
     WatchListServices.getWatchListByUserId(
       JSON.parse(localStorage.getItem("user")).id
     )
       .then((res) => {
-        console.log(res);
         let watch = [];
         SecurityServices.getAllSecurity().then((res1) => {
           res.data.forEach((el) => {
-            watch.push(res1.data.find((e) => e.id === el.securityid));
+            let f = res1.data.find((e) => e.id === el.securityid);
+            watch.push(f);
           });
+          watch = watch.filter((x) => x !== undefined);
           setData(watch);
         });
       })
@@ -84,9 +86,22 @@ function TradeTabledata() {
         </div>
       </div>
 
-      <Table columns={columns} data={data} />
+      <Table
+        handleDelete={(securityid) => {
+          deleteFromWatchList(securityid);
+        }}
+        columns={columns}
+        data={data}
+      />
     </div>
   );
 }
+
+const deleteFromWatchList = (securityid) => {
+  let userid = JSON.parse(localStorage.getItem("user")).id;
+  WatchListServices.removeFromWatchList(securityid, userid).then((res) => {
+    window.location.href = "/watchlist";
+  });
+};
 
 export default TradeTabledata;
